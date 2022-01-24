@@ -197,10 +197,10 @@ class MirrorListener:
         if self.isLeech:
             count = len(files)
             msg = f'<b>Name: </b><code>{name}</code>\n'
-            msg += f'<b>Size: </b>{size}\n'
-            msg += f'<b>Total Files: </b>{count}'
+            msg += f'<b>Size: </b><code>{size}</code>\n'
+            msg += f'<b>Total Files: </b><code>{count}</code>'
             if typ != 0:
-                msg += f'\n<b>Corrupted Files: </b>{typ}'
+                msg += f'\n<b>Corrupted Files: </b><code>{typ}</code>'
             if self.message.chat.type == 'private':
                 sendMessage(msg, self.bot, self.update)
             else:
@@ -230,15 +230,15 @@ class MirrorListener:
             else:
                 update_all_messages()
         else:
-            msg = f'<b>Name: </b><code>{name}</code>\n<b>Size: </b>{size}'
-            msg += f'\n<b>Type: </b>{typ}'
+            msg = f'<b>Name: </b><code>{name}</code>\n<b>Size: </b></code><code>{size}</code>'
+            msg += f'\n<b>Type: </b><code>{typ}</code>'
             if ospath.isdir(f'{DOWNLOAD_DIR}{self.uid}/{name}'):
-                msg += f'\n<b>SubFolders: </b>{folders}'
-                msg += f'\n<b>Files: </b>{files}'
-            msg += f'\n<b>User: </b>{self.tag}'
+                msg += f'\n<b>SubFolders: </b><code>{folders}</code>'
+                msg += f'\n<b>Files: </b><code>{files}</code>'
+            msg += f'\n\n<b>User: </b>{self.tag}'
             buttons = ButtonMaker()
             link = short_url(link)
-            buttons.buildbutton("☁️ Drive Link", link)
+            buttons.buildbutton("☁ Drive Link", link)
             LOGGER.info(f'Done Uploading {name}')
             if INDEX_URL is not None:
                 url_path = requests.utils.quote(f'{name}')
@@ -246,14 +246,14 @@ class MirrorListener:
                 if ospath.isdir(f'{DOWNLOAD_DIR}/{self.uid}/{name}'):
                     share_url += '/'
                     share_url = short_url(share_url)
-                    buttons.buildbutton("⚡ Index Link", share_url)
+                    buttons.buildbutton("ϟ Direct Link", share_url)
                 else:
                     share_url = short_url(share_url)
-                    buttons.buildbutton("⚡ Index Link", share_url)
+                    buttons.buildbutton("ϟ Direct Link", share_url)
                     if VIEW_LINK:
                         share_urls = f'{INDEX_URL}/{url_path}?a=view'
                         share_urls = short_url(share_urls)
-                        buttons.buildbutton("🌐 View Link", share_urls)
+                        buttons.buildbutton("❄ View Link", share_urls)
             if BUTTON_FOUR_NAME is not None and BUTTON_FOUR_URL is not None:
                 buttons.buildbutton(f"{BUTTON_FOUR_NAME}", f"{BUTTON_FOUR_URL}")
             if BUTTON_FIVE_NAME is not None and BUTTON_FIVE_URL is not None:
