@@ -168,7 +168,7 @@ class GoogleDriveHelper:
         # File body description
         file_metadata = {
             'name': file_name,
-            'description': 'Uploaded by QMirrorLeechBot',
+            'description': 'Uploaded by QMirrorLeech',
             'mimeType': mime_type,
         }
         if parent_id is not None:
@@ -354,8 +354,8 @@ class GoogleDriveHelper:
                     LOGGER.info("Deleting cloned data from Drive...")
                     self.deletefile(durl)
                     return "your clone has been stopped and cloned data has been deleted!", "cancelled"
-                msg += f'<b>Name: </b><code>{meta.get("name")}</code>\n\n<b>Size: </b>{get_readable_file_size(self.transferred_size)}'
-                msg += '\n\n<b>Type: </b>Folder'
+                msg += f'<b>Name: </b><code>{meta.get("name")}</code>\n<b>Size: </b>{get_readable_file_size(self.transferred_size)}'
+                msg += '\n<b>Type: </b>Folder'
                 msg += f'\n<b>SubFolders: </b>{self.__total_folders}'
                 msg += f'\n<b>Files: </b>{self.__total_files}'
                 buttons = ButtonMaker()
@@ -375,8 +375,8 @@ class GoogleDriveHelper:
                 buttons.buildbutton("☁ Drive Link", durl)
                 if mime_type is None:
                     mime_type = 'File'
-                msg += f'\n\n<b>Size: </b><code>{get_readable_file_size(int(meta.get("size", 0)))}</code>'
-                msg += f'\n\n<b>Type: </b><code>{mime_type}</code>'
+                msg += f'\n<b>Size: </b><code>{get_readable_file_size(int(meta.get("size", 0)))}</code>'
+                msg += f'\n<b>Type: </b><code>{mime_type}</code>'
                 if INDEX_URL is not None:
                     url_path = rquote(f'{file.get("name")}')
                     url = f'{INDEX_URL}/{url_path}'
