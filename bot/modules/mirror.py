@@ -246,10 +246,10 @@ class MirrorListener:
                 if ospath.isdir(f'{DOWNLOAD_DIR}/{self.uid}/{name}'):
                     share_url += '/'
                     share_url = short_url(share_url)
-                    buttons.buildbutton("ϟ Index Link", share_url)
+                    buttons.buildbutton("✹ Index Link", share_url)
                 else:
                     share_url = short_url(share_url)
-                    buttons.buildbutton("ϟ Index Link", share_url)
+                    buttons.buildbutton("✹ Index Link", share_url)
                     if VIEW_LINK:
                         share_urls = f'{INDEX_URL}/{url_path}?a=view'
                         share_urls = short_url(share_urls)
