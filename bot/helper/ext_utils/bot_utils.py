@@ -151,7 +151,7 @@ def get_readable_message():
                            f" | <b>Leechers:</b> {download.torrent_info().num_leechs}"
                 except:
                     pass
-                msg += f"\n<b>Uploader: </b> <a href='tg://user?id={download.message.from_user.id}'>{download.message.from_user.first_name}</a><code>({download.message.from_user.id})</code>"
+                msg += f"\n<b>Uploader: </b> <a href='tg://user?id={download.message.from_user.id}'>{download.message.from_user.first_name}</a><code> ({download.message.from_user.id})</code>"
                 msg += f"\n<b>To Cancel: </b><code>/{BotCommands.CancelMirror} {download.gid()}</code>"
             elif download.status() == MirrorStatus.STATUS_SEEDING:
                 msg += f"\n<b>Size: </b>{download.size()}"
@@ -162,7 +162,7 @@ def get_readable_message():
                 msg += f"\n<b>To Cancel: </b><code>/{BotCommands.CancelMirror} {download.gid()}</code>"
             else:
                 msg += f"\n<b>Size: </b>{download.size()}"
-            msg += "\n___________________________\n"
+            msg += "\n______________________________\n"
             if STATUS_LIMIT is not None and index == STATUS_LIMIT:
                 break
         total, used, free, _ = disk_usage('.')
@@ -184,7 +184,7 @@ def get_readable_message():
         dlspeed = get_readable_file_size(dlspeed_bytes)
         ulspeed = get_readable_file_size(uldl_bytes)
         bmsg += f"\n<b>RAM:</b> {virtual_memory().percent}% | <b>UPTIME:</b> {currentTime}"
-        bmsg += f"\n<b>▼ DL:</b> {dlspeed}/s | <b>▲ UL:</b> {ulspeed}/s"
+        bmsg += f"\n<b>DL:</b> {dlspeed}/s ▼ | <b>UL:</b> {ulspeed}/s ▲"
         if STATUS_LIMIT is not None and tasks > STATUS_LIMIT:
             msg += f"<b>Page:</b> {PAGE_NO}/{pages} | <b>Tasks:</b> {tasks}\n"
             buttons = ButtonMaker()
